@@ -69,7 +69,7 @@ document.getElementById("hijriah").innerText =
 
     function isRamadhan(date) {
       const hijriMonth = date.toLocaleDateString(
-        "id-ID-u-ca-islamic",
+         "id-ID-u-ca-islamic-umalqura",
         { month: "numeric" }
       );
       return hijriMonth === "9";
@@ -137,9 +137,17 @@ document.getElementById("hijriah").innerText =
     });
   }
 
-  if (hijriahEl) {
-    hijriahEl.textContent = getHijriIndonesia(today);
-  }
+ function getHijri(date = new Date(), options = {}) {
+  return date.toLocaleDateString(
+    "id-ID-u-ca-islamic-umalqura",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      ...options
+    }
+  );
+}
 
   if (jepangEl) {
     jepangEl.textContent = today.toLocaleDateString(
