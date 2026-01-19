@@ -67,6 +67,10 @@
   background: #1b5e20;
 }
 @media (max-width: 600px) {
+  .kalender {
+    max-width: 100%;
+  }
+
   .kalender div {
     height: 32px;
     line-height: 32px;
