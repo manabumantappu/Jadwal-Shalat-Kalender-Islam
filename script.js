@@ -3,6 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("JS jalan");
 
   const today = new Date();
+  
+ // ⬇️⬇️⬇️ TEMPATKAN DI SINI ⬇️⬇️⬇️
+  let userLat = -6.2;   // default Jakarta
+  let userLon = 106.8;
+  const cities = {
+  jakarta:   { lat: -6.2,  lon: 106.8 },
+  bandung:   { lat: -6.91, lon: 107.61 },
+  surabaya:  { lat: -7.25, lon: 112.75 },
+  semarang:  { lat: -6.97, lon: 110.42 },
+  yogyakarta:{ lat: -7.80, lon: 110.37 },
+  medan:     { lat:  3.59, lon: 98.67 },
+  makassar:  { lat: -5.15, lon: 119.43 }
+};
 
   /* =========================
      HIJRIAH (UMM AL-QURA)
