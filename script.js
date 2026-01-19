@@ -44,8 +44,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function getJadwalShalat(date) {
   // default: Jakarta
-  const lat = -6.2;
-  const lon = 106.8;
+ async function getJadwalShalat(date) {
+  const timestamp = Math.floor(date.getTime() / 1000);
+
+  const url =
+    `https://api.aladhan.com/v1/timings/${timestamp}` +
+    `?latitude=${userLat}&longitude=${userLon}&method=11`;
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  return {
+    Subuh: data.data.timings.Fajr,
+    Dzuhur: data.data.timings.Dhuhr,
+    Ashar: data.data.timings.Asr,
+    Maghrib: data.data.timings.Maghrib,
+    Isya: data.data.timings.Isha
+  };
+}
+
 
   const timestamp = Math.floor(date.getTime() / 1000);
 
@@ -146,16 +163,7 @@ if (jepangEl) {
       }
 
       // 👉 KLIK TANGGAL → POPUP
-      cell.addEventListener("click", () => {
-        const popup = document.getElementById("popupTanggal");
-
-        document.getElementById("popupDate").textContent =
-          formatMasehi(cellDate);
-
-        document.getElementById("popupHijri").textContent =
-          "🌙 " + getHijri(cellDate);
-
-       cell.addEventListener("click", async () => {
+      cell.addEventListener("click", async () => {
   const popup = document.getElementById("popupTanggal");
 
   document.getElementById("popupDate").textContent =
