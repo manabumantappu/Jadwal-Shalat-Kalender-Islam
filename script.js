@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+  // semua kode kalender di sini
 // === KALENDER HARI INI ===
 const today = new Date();
 
@@ -29,7 +31,6 @@ const jepang = today.toLocaleDateString(
 document.getElementById("masehi").innerText = masehi;
 document.getElementById("hijriah").innerText = hijriah;
 document.getElementById("jepang").innerText = jepang;
-document.addEventListener("DOMContentLoaded", () => {
-  // semua kode kalender di sini
+
 });
 
