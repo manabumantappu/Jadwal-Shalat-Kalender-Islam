@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+  .container {
+    padding: 12px;
+  }
+
+  .card {
+    margin: 10px 0;
+  }
+
+  label {
+    font-size: 16px;
+  }
+}
