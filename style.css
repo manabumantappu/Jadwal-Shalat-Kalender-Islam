@@ -80,3 +80,47 @@
 #monthTitle {
   font-size: 16px;
 }
+/* Wrapper agar header & kalender sejajar */
+.calendar-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* Header navigasi */
+.calendar-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Tombol */
+.nav-btn {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  font-size: 14px;
+}
+
+/* Judul bulan */
+.nav-title {
+  text-align: center;
+}
+
+#monthTitle {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#ramadhanInfo {
+  font-size: 12px;
+  color: #15803d;
+}
+
+/* Kalender grid */
+.kalender {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
+}
