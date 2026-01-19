@@ -207,6 +207,30 @@ if (jepangEl) {
 
   renderCalendar(currentDate);
 
+  const selectCity = document.getElementById("selectCity");
+
+if (selectCity) {
+  // load kota terakhir
+  const savedCity = localStorage.getItem("city");
+  if (savedCity && cities[savedCity]) {
+    selectCity.value = savedCity;
+    userLat = cities[savedCity].lat;
+    userLon = cities[savedCity].lon;
+  }
+
+  selectCity.addEventListener("change", () => {
+    const city = selectCity.value;
+
+    if (cities[city]) {
+      userLat = cities[city].lat;
+      userLon = cities[city].lon;
+
+      localStorage.setItem("city", city);
+      console.log("Kota dipilih:", city);
+    }
+  });
+}
+
   /* =========================
      TUTUP POPUP
      ========================= */
