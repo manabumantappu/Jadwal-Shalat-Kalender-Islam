@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jadwal Shalat & Kalender Islam</title>
-<link rel="manifest" href="/public/manifest.json" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-islamic: '#0f766e',
-gold: '#d4af37'
-}
-}
-}
-}
-</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jadwal Shalat & Kalender Islam</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            islamic: '#0f766e'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="manifest" href="../public/manifest.json">
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen">
-<header class="bg-islamic text-white p-4 text-center shadow">
-<h1 class="text-2xl font-bold">🕌 Jadwal Shalat</h1>
-<p id="location" class="text-sm text-emerald-100">Mendeteksi lokasi...</p>
-</header>
 
+<body class="bg-slate-50 min-h-screen">
 
-<section id="shalat-times" class="grid grid-cols-2 gap-3 p-4"></section>
+  <!-- HEADER -->
+  <header class="bg-islamic text-white p-4 text-center shadow">
+    <h1 class="text-2xl font-bold">🕌 Jadwal Shalat</h1>
+    <p class="text-sm opacity-90">Kalender Islam Indonesia</p>
+  </header>
 
+  <!-- JADWAL SHALAT -->
+  <section id="shalat-times" class="grid grid-cols-2 gap-3 p-4"></section>
 
-<section id="calendar" class="p-4">
-<h2>📅 Kalender Islam</h2>
-<div id="hijri-date"></div>
-</section>
+  <!-- KALENDER HIJRIYAH -->
+  <section class="p-4">
+    <h2 class="font-bold text-lg mb-2">📅 Kalender Hijriyah</h2>
+    <div id="hijri-date" class="text-xl"></div>
+  </section>
 
-<section class="p-4 bg-white rounded-xl shadow m-4">
-<h2 class="text-lg font-bold text-islamic">⏰ Alarm Ramadhan</h2>
-<label class="flex items-center gap-2 mt-2">
-<input type="checkbox" id="alarm-sahur" /> Alarm Sahur
-</label>
-<label class="flex items-center gap-2 mt-2">
-<input type="checkbox" id="alarm-imsak" /> Alarm Imsak
-</label>
-</section>
-  
-<section id="ramadhan" class="hidden"></section>
-<!-- AUDIO (JANGAN DIHAPUS) -->
-<audio id="audio-sahur" src="/public/audio/sahur.mp3" preload="auto"></audio>
-<audio id="audio-adzan" src="/public/audio/adzan.mp3" preload="auto"></audio>
+  <!-- MODE RAMADHAN -->
+  <section id="ramadhan" class="p-4 hidden"></section>
 
-<section class="p-4 bg-white rounded-xl shadow m-4">
-  <h2 class="text-lg font-bold text-islamic">⏰ Alarm Ramadhan</h2>
+  <!-- ALARM -->
+  <section class="p-4 bg-white rounded-xl shadow m-4">
+    <h2 class="text-lg font-bold text-islamic">⏰ Alarm Ramadhan</h2>
 
-  <label class="flex items-center gap-2 mt-3">
-    <input type="checkbox" id="alarm-sahur">
-    Alarm Sahur
-  </label>
+    <label class="flex items-center gap-2 mt-3">
+      <input type="checkbox" id="alarm-sahur">
+      Alarm Sahur
+    </label>
 
-  <label class="flex items-center gap-2 mt-2">
-    <input type="checkbox" id="alarm-imsak">
-    Alarm Imsak
-  </label>
-</section>
+    <label class="flex items-center gap-2 mt-2">
+      <input type="checkbox" id="alarm-imsak">
+      Alarm Imsak
+    </label>
+  </section>
 
-<script type="module" src="./app.js"></script>
+  <!-- AUDIO -->
+  <audio id="audio-sahur" src="../public/audio/sahur.mp3" preload="auto"></audio>
+  <audio id="audio-adzan" src="../public/audio/adzan.mp3" preload="auto"></audio>
+
+  <!-- JS -->
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
