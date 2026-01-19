@@ -1,3 +1,7 @@
+/* =========================
+   GLOBAL / CARD
+   ========================= */
+
 @media (max-width: 600px) {
   body {
     padding: 12px;
@@ -25,16 +29,59 @@
   font-size: 15px;
 }
 
-/* Kalender */
+/* =========================
+   CALENDAR WRAPPER
+   ========================= */
+
+.calendar-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* =========================
+   CALENDAR NAV (PREV / TITLE / NEXT)
+   ========================= */
+
+.calendar-nav {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.nav-btn {
+  width: 32px;
+  height: 32px;
+  background: #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.nav-title {
+  text-align: center;
+}
+
+#monthTitle {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#ramadhanInfo {
+  font-size: 12px;
+  color: #15803d;
+}
+
+/* =========================
+   CALENDAR GRID
+   ========================= */
+
 .kalender {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 6px;
-  max-width: 420px;        /* KUNCI LEBAR TOTAL */
-  margin: 0 auto;         /* TENGAHKAN */
   text-align: center;
 }
-
 
 .kalender div {
   height: 36px;
@@ -43,14 +90,16 @@
   font-size: 14px;
 }
 
-
 .kalender .header {
   font-weight: bold;
-  color: #444;
   height: auto;
   line-height: normal;
+  color: #444;
 }
 
+/* =========================
+   STATE
+   ========================= */
 
 .today {
   background: #1976d2;
@@ -66,6 +115,11 @@
 .today.ramadhan {
   background: #1b5e20;
 }
+
+/* =========================
+   MOBILE CALENDAR
+   ========================= */
+
 @media (max-width: 600px) {
   .calendar-wrapper {
     max-width: 100%;
@@ -80,106 +134,4 @@
     line-height: 32px;
     font-size: 13px;
   }
-
-/* Wrapper agar header & kalender sejajar */
-.calendar-wrapper {
-  max-width: 420px;
-  margin: 0 auto;
-}
-
-/* Header navigasi */
-.calendar-nav {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-/* Tombol */
-.nav-btn {
-  padding: 4px 8px;
-  border-radius: 6px;
-  background: #e2e8f0;
-  font-size: 14px;
-}
-
-/* Judul bulan */
-.nav-title {
-  text-align: center;
-}
-
-#monthTitle {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-#ramadhanInfo {
-  font-size: 12px;
-  color: #15803d;
-}
-
-/* Kalender grid */
-.kalender {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  text-align: center;
-}
-/* ===== WRAPPER ===== */
-.calendar-wrapper {
-  max-width: 420px;
-  margin: 0 auto;
-}
-
-/* ===== HEADER NAV ===== */
-.calendar-nav {
-  display: grid;
-  grid-template-columns: 32px 1fr 32px;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-/* Tombol panah */
-.nav-btn {
-  width: 32px;
-  height: 32px;
-  background: #e2e8f0;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-/* Judul bulan */
-.nav-title {
-  text-align: center;
-}
-
-#monthTitle {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-#ramadhanInfo {
-  font-size: 12px;
-  color: #15803d;
-}
-
-/* ===== KALENDER ===== */
-.kalender {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  text-align: center;
-}
-
-.kalender div {
-  height: 36px;
-  line-height: 36px;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-.kalender .header {
-  font-weight: bold;
-  height: auto;
-  line-height: normal;
 }
