@@ -51,4 +51,52 @@ if (e.target.checked) {
 scheduleAlarm(`${today}T${imsak}`, '⏰ Imsak', 'Waktu Imsak telah tiba');
 }
 };
+  function playSound(type) {
+  if (type === 'sahur') {
+    document.getElementById('audio-sahur').play();
+  }
+
+  if (type === 'adzan') {
+    document.getElementById('audio-adzan').play();
+  }
+}
+
+function scheduleAlarm(time, title, body, soundType) {
+  const alarmTime = new Date(time).getTime();
+  const now = Date.now();
+  const delay = alarmTime - now;
+
+  if (delay <= 0) return;
+
+  setTimeout(() => {
+    navigator.serviceWorker.ready.then(reg => {
+      reg.showNotification(title, {
+        body,
+        icon: '/public/icons/icon-192.png',
+        vibrate: [300, 200, 300]
+      });
+      playSound(soundType);
+    });
+  }, delay);
+}
+
+export function initRamadhanAlarm() {
+  Notification.requestPermission();
+
+  const today = new Date().toISOString().split('T')[0];
+  const imsak = '04:25'; // nanti bisa dari jadwal shalat
+
+  document.getElementById('alarm-sahur').onchange = e => {
+    if (e.target.checked) {
+      scheduleAlarm(`${today}T03:55`, '🌙 Sahur', 'Waktunya Sahur', 'sahur');
+    }
+  };
+
+  document.getElementById('alarm-imsak').onchange = e => {
+    if (e.target.checked) {
+      scheduleAlarm(`${today}T${imsak}`, '🕌 Imsak', 'Waktu Imsak Telah Tiba', 'adzan');
+    }
+  };
+}
+
 }
