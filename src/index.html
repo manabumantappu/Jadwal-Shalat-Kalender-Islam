@@ -5,19 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Jadwal Shalat & Kalender Islam</title>
 <link rel="manifest" href="/public/manifest.json" />
-<link rel="stylesheet" href="style.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+islamic: '#0f766e',
+gold: '#d4af37'
+}
+}
+}
+}
+</script>
 </head>
-<body>
-<header>
-<h1>🕌 Jadwal Shalat</h1>
-<p id="location">Mendeteksi lokasi...</p>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+<header class="bg-islamic text-white p-4 text-center shadow">
+<h1 class="text-2xl font-bold">🕌 Jadwal Shalat</h1>
+<p id="location" class="text-sm text-emerald-100">Mendeteksi lokasi...</p>
 </header>
 
 
-<section id="shalat-times"></section>
+<section id="shalat-times" class="grid grid-cols-2 gap-3 p-4"></section>
 
 
-<section id="calendar">
+<section id="calendar" class="p-4">
 <h2>📅 Kalender Islam</h2>
 <div id="hijri-date"></div>
 </section>
