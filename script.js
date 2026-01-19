@@ -15,64 +15,79 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentDate = new Date();
 
-  function renderCalendar(date) {
-    if (!calendarEl || !monthTitle) return;
+ function renderCalendar(date) {
+  if (!calendarEl || !monthTitle) return;
 
-    calendarEl.innerHTML = "";
+  calendarEl.innerHTML = "";
 
-    const year = date.getFullYear();
-    const month = date.getMonth();
+  const ramadhanInfo = document.getElementById("ramadhanInfo");
+  if (ramadhanInfo) ramadhanInfo.classList.add("hidden");
 
-    const monthNames = [
-      "Januari","Februari","Maret","April","Mei","Juni",
-      "Juli","Agustus","September","Oktober","November","Desember"
-    ];
+  const year = date.getFullYear();
+  const month = date.getMonth();
 
-    monthTitle.textContent = `${monthNames[month]} ${year}`;
+  const monthNames = [
+    "Januari","Februari","Maret","April","Mei","Juni",
+    "Juli","Agustus","September","Oktober","November","Desember"
+  ];
 
-    const days = ["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
-    days.forEach(d => {
-      const el = document.createElement("div");
-      el.textContent = d;
-      el.className = "header";
-      calendarEl.appendChild(el);
-    });
+  monthTitle.textContent = `${monthNames[month]} ${year}`;
 
-    const firstDay = new Date(year, month, 1).getDay();
-    for (let i = 0; i < firstDay; i++) {
-      calendarEl.appendChild(document.createElement("div"));
-    }
+  const days = ["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
+  days.forEach(d => {
+    const el = document.createElement("div");
+    el.textContent = d;
+    el.className = "header";
+    calendarEl.appendChild(el);
+  });
 
-    const totalDays = new Date(year, month + 1, 0).getDate();
-
-    function isRamadhan(date) {
-      const hijriMonth = date.toLocaleDateString(
-        "id-ID-u-ca-islamic",
-        { month: "numeric" }
-      );
-      return hijriMonth === "9";
-    }
-
-    for (let d = 1; d <= totalDays; d++) {
-      const cellDate = new Date(year, month, d);
-      const cell = document.createElement("div");
-      cell.textContent = d;
-
-      if (
-        d === today.getDate() &&
-        month === today.getMonth() &&
-        year === today.getFullYear()
-      ) {
-        cell.classList.add("today");
-      }
-
-      if (isRamadhan(cellDate)) {
-        cell.classList.add("ramadhan");
-      }
-
-      calendarEl.appendChild(cell);
-    }
+  const firstDay = new Date(year, month, 1).getDay();
+  for (let i = 0; i < firstDay; i++) {
+    calendarEl.appendChild(document.createElement("div"));
   }
+
+  const totalDays = new Date(year, month + 1, 0).getDate();
+
+  function isRamadhan(date) {
+    const hijriMonth = date.toLocaleDateString(
+      "id-ID-u-ca-islamic",
+      { month: "numeric" }
+    );
+    return hijriMonth === "9";
+  }
+
+  for (let d = 1; d <= totalDays; d++) {
+    const cellDate = new Date(year, month, d);
+    const cell = document.createElement("div");
+    cell.textContent = d;
+
+    const isToday =
+      d === today.getDate() &&
+      month === today.getMonth() &&
+      year === today.getFullYear();
+
+    if (isToday) {
+      cell.classList.add("today");
+    }
+
+    if (isRamadhan(cellDate)) {
+      cell.classList.add("ramadhan");
+
+      if (isToday && ramadhanInfo) {
+        const hijriDay = cellDate.toLocaleDateString(
+          "id-ID-u-ca-islamic",
+          { day: "numeric" }
+        );
+
+        ramadhanInfo.textContent = `🌙 Ramadhan hari ke-${hijriDay}`;
+        ramadhanInfo.classList.remove("hidden");
+      }
+    }
+
+    calendarEl.appendChild(cell);
+  }
+}
+
 
   // tombol navigasi (AMAN)
   if (prevBtn && nextBtn) {
