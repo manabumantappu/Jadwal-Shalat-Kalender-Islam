@@ -29,13 +29,14 @@
 .kalender {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  gap: 4px;
   text-align: center;
   margin-top: 10px;
 }
 
 .kalender div {
-  padding: 8px 0;
+  height: 36px;
+  line-height: 36px;
   border-radius: 8px;
   font-size: 14px;
 }
@@ -43,7 +44,10 @@
 .kalender .header {
   font-weight: bold;
   color: #444;
+  height: auto;
+  line-height: normal;
 }
+
 
 .today {
   background: #1976d2;
@@ -58,4 +62,11 @@
 
 .today.ramadhan {
   background: #1b5e20;
+}
+@media (max-width: 600px) {
+  .kalender div {
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+  }
 }
