@@ -28,11 +28,13 @@
 /* Kalender */
 .kalender {
   display: grid;
-  grid-template-columns: repeat(7, 40px); /* KUNCI LEBAR */
+  grid-template-columns: repeat(7, 1fr);
   gap: 6px;
-  justify-content: center; /* TENGAH */
-  margin-top: 10px;
+  max-width: 420px;        /* KUNCI LEBAR TOTAL */
+  margin: 0 auto;         /* TENGAHKAN */
+  text-align: center;
 }
+
 
 .kalender div {
   height: 36px;
