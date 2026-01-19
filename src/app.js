@@ -16,4 +16,5 @@ document.getElementById('location').innerText = 'Lokasi terdeteksi';
 getShalatTimes(latitude, longitude);
 getHijriDate();
 checkRamadhan();
+initRamadhanAlarm();
 });
