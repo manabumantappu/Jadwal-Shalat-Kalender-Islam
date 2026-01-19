@@ -46,6 +46,23 @@ document.addEventListener("DOMContentLoaded", function () {
   if (hijriDateEl) {
     hijriDateEl.textContent = getHijri(today);
   }
+const masehiEl = document.getElementById("masehi");
+if (masehiEl) {
+  masehiEl.textContent = today.toLocaleDateString("id-ID", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
+const jepangEl = document.getElementById("jepang");
+if (jepangEl) {
+  jepangEl.textContent = today.toLocaleDateString(
+    "ja-JP-u-ca-japanese",
+    { year: "numeric" }
+  );
+}
 
   const hijriahEl = document.getElementById("hijriah");
   if (hijriahEl) {
