@@ -123,6 +123,29 @@ async function getJadwalShalat(date) {
     Isya: data.data.timings.Isha
   };
 }
+// === KALENDER HARI INI ===
+const masehiEl = document.getElementById("masehi");
+if (masehiEl) {
+  masehiEl.textContent = today.toLocaleDateString("id-ID", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
+const hijriahEl = document.getElementById("hijriah");
+if (hijriahEl) {
+  hijriahEl.textContent = getHijri(today);
+}
+
+const jepangEl = document.getElementById("jepang");
+if (jepangEl) {
+  jepangEl.textContent = today.toLocaleDateString(
+    "ja-JP-u-ca-japanese",
+    { year: "numeric" }
+  );
+}
 
 
   /* =========================
