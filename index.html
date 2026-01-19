@@ -96,6 +96,24 @@
   <audio id="audio-sahur" src="../public/audio/sahur.mp3" preload="auto"></audio>
   <audio id="audio-adzan" src="../public/audio/adzan.mp3" preload="auto"></audio>
 
+  <!-- POPUP DETAIL TANGGAL -->
+<div id="popupTanggal"
+     class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+  <div class="bg-white rounded-xl p-4 w-80 shadow-lg">
+    <h3 id="popupDate" class="font-bold text-lg mb-2"></h3>
+    <p id="popupHijri" class="mb-2"></p>
+
+    <div id="popupShalat" class="text-sm space-y-1"></div>
+
+    <button id="closePopup"
+            class="mt-4 w-full bg-islamic text-white py-2 rounded">
+      Tutup
+    </button>
+  </div>
+
+</div>
+
   <!-- JS -->
   <script src="script.js"></script>
 </body>
