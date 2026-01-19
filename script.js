@@ -29,15 +29,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function getJadwalShalatDummy() {
-    return {
-      Subuh: "04:35",
-      Dzuhur: "12:05",
-      Ashar: "15:25",
-      Maghrib: "18:10",
-      Isya: "19:20"
-    };
-  }
+async function getJadwalShalat(date) {
+  // default: Jakarta
+  const lat = -6.2;
+  const lon = 106.8;
+
+  const timestamp = Math.floor(date.getTime() / 1000);
+
+  const url = `https://api.aladhan.com/v1/timings/${timestamp}?latitude=${lat}&longitude=${lon}&method=11`;
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  return {
+    Subuh: data.data.timings.Fajr,
+    Dzuhur: data.data.timings.Dhuhr,
+    Ashar: data.data.timings.Asr,
+    Maghrib: data.data.timings.Maghrib,
+    Isya: data.data.timings.Isha
+  };
+}
+
 
   /* =========================
      TAMPIL HIJRIAH ATAS
@@ -130,7 +142,32 @@ if (jepangEl) {
         document.getElementById("popupHijri").textContent =
           "🌙 " + getHijri(cellDate);
 
-        const jadwal = getJadwalShalatDummy();
+       cell.addEventListener("click", async () => {
+  const popup = document.getElementById("popupTanggal");
+
+  document.getElementById("popupDate").textContent =
+    formatMasehi(cellDate);
+
+  document.getElementById("popupHijri").textContent =
+    "🌙 " + getHijri(cellDate);
+
+  const popupShalat = document.getElementById("popupShalat");
+  popupShalat.innerHTML = "<p>⏳ Memuat jadwal shalat...</p>";
+
+  try {
+    const jadwal = await getJadwalShalat(cellDate);
+    popupShalat.innerHTML = "";
+
+    for (const s in jadwal) {
+      popupShalat.innerHTML += `<p>🕌 ${s}: ${jadwal[s]}</p>`;
+    }
+  } catch (e) {
+    popupShalat.innerHTML = "<p>❌ Gagal memuat jadwal shalat</p>";
+  }
+
+  popup.classList.remove("hidden");
+});
+
         const popupShalat = document.getElementById("popupShalat");
         popupShalat.innerHTML = "";
 
