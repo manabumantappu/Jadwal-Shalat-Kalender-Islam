@@ -125,3 +125,61 @@
   gap: 6px;
   text-align: center;
 }
+/* ===== WRAPPER ===== */
+.calendar-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* ===== HEADER NAV ===== */
+.calendar-nav {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Tombol panah */
+.nav-btn {
+  width: 32px;
+  height: 32px;
+  background: #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Judul bulan */
+.nav-title {
+  text-align: center;
+}
+
+#monthTitle {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#ramadhanInfo {
+  font-size: 12px;
+  color: #15803d;
+}
+
+/* ===== KALENDER ===== */
+.kalender {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
+}
+
+.kalender div {
+  height: 36px;
+  line-height: 36px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.kalender .header {
+  font-weight: bold;
+  height: auto;
+  line-height: normal;
+}
