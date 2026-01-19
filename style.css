@@ -28,9 +28,9 @@
 /* Kalender */
 .kalender {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  text-align: center;
+  grid-template-columns: repeat(7, 40px); /* KUNCI LEBAR */
+  gap: 6px;
+  justify-content: center; /* TENGAH */
   margin-top: 10px;
 }
 
