@@ -18,6 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   );
 }
+// === TAMPILKAN KALENDER HIJRIYAH (BAGIAN ATAS) ===
+const hijriDateEl = document.getElementById("hijri-date");
+if (hijriDateEl) {
+  hijriDateEl.textContent = getHijri(new Date(), {
+    weekday: "long"
+  });
+}
 
 // tampilkan
 document.getElementById("hijriah").innerText =
