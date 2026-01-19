@@ -136,13 +136,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (hijriahEl) {
-    hijriahEl.textContent = today.toLocaleDateString(
-      "id-ID-u-ca-islamic",
-      {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      }
+  hijriahEl.textContent = getHijriIndonesia(today);
+}
+
     );
   }
 
