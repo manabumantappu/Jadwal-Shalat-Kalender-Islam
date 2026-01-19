@@ -23,3 +23,36 @@
   margin: 8px 0;
   font-size: 15px;
 }
+.kalender {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.kalender div {
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.kalender .header {
+  font-weight: bold;
+  color: #555;
+}
+
+.today {
+  background: #1976d2;
+  color: white;
+  font-weight: bold;
+}
+
+.ramadhan {
+  background: #2e7d32;
+  color: white;
+}
+
+.today.ramadhan {
+  background: #1b5e20;
+}
