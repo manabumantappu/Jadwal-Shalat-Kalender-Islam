@@ -23,6 +23,7 @@
   margin: 8px 0;
   font-size: 15px;
 }
+/* ===== KALENDER MASEHI ===== */
 .kalender {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -39,7 +40,7 @@
 
 .kalender .header {
   font-weight: bold;
-  color: #555;
+  color: #444;
 }
 
 .today {
@@ -55,22 +56,4 @@
 
 .today.ramadhan {
   background: #1b5e20;
-}
-.kalender {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.kalender div {
-  padding: 8px 0;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.kalender .header {
-  font-weight: bold;
-  color: #444;
 }
