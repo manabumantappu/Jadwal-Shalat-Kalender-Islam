@@ -3,7 +3,21 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("JS jalan");
 
   const today = new Date();
+ 
+  // === HIJRIAH VERSI INDONESIA (OFFSET) ===
+  function getHijriIndonesia(date) {
+    const adjusted = new Date(date);
+    adjusted.setDate(adjusted.getDate() - 1); // offset Indonesia
 
+    return adjusted.toLocaleDateString(
+      "id-ID-u-ca-islamic",
+      {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }
+    );
+  }
   /* =========================
      NAVIGASI KALENDER MASEHI
      ========================= */
