@@ -7,19 +7,22 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      HIJRIAH VERSI INDONESIA
      ========================= */
-  function getHijriIndonesia(date) {
-    const adjusted = new Date(date);
-    adjusted.setDate(adjusted.getDate() - 1); // offset Indonesia (-1 hari)
+ function getHijri(date = new Date()) {
+  return date.toLocaleDateString(
+    "id-ID-u-ca-islamic-umalqura",
+    {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }
+  );
+}
 
-    return adjusted.toLocaleDateString(
-      "id-ID-u-ca-islamic",
-      {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      }
-    );
-  }
+// tampilkan
+document.getElementById("hijriah").innerText =
+  "Hijriah : " + getHijri();
+
 
   /* =========================
      NAVIGASI KALENDER MASEHI
