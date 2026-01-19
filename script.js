@@ -8,13 +8,57 @@ document.addEventListener("DOMContentLoaded", function () {
   let userLat = -6.2;   // default Jakarta
   let userLon = 106.8;
   const cities = {
-  jakarta:   { lat: -6.2,  lon: 106.8 },
-  bandung:   { lat: -6.91, lon: 107.61 },
-  surabaya:  { lat: -7.25, lon: 112.75 },
-  semarang:  { lat: -6.97, lon: 110.42 },
-  yogyakarta:{ lat: -7.80, lon: 110.37 },
-  medan:     { lat:  3.59, lon: 98.67 },
-  makassar:  { lat: -5.15, lon: 119.43 }
+ // Jawa Barat
+  jakarta:    { lat: -6.2,  lon: 106.8 },
+  bekasi:     { lat: -6.24, lon: 106.99 },
+  bandung:    { lat: -6.91, lon: 107.61 },
+  cirebon:    { lat: -6.73, lon: 108.55 },
+  bogor:      { lat: -6.60, lon: 106.80 },
+  depok:      { lat: -6.40, lon: 106.82 },
+  sukabumi:   { lat: -6.92, lon: 106.93 },
+  tasikmalaya:{ lat: -7.33, lon: 108.22 },
+
+  // Jawa Tengah
+  semarang:   { lat: -6.97, lon: 110.42 },
+  solo:       { lat: -7.57, lon: 110.83 },
+  magelang:   { lat: -7.48, lon: 110.22 },
+  tegal:      { lat: -6.87, lon: 109.14 },
+  pekalongan: { lat: -6.89, lon: 109.67 },
+
+  // DIY
+  yogyakarta: { lat: -7.80, lon: 110.37 },
+
+  // Jawa Timur
+  surabaya:   { lat: -7.25, lon: 112.75 },
+  malang:     { lat: -7.98, lon: 112.63 },
+  kediri:     { lat: -7.82, lon: 112.01 },
+  jember:     { lat: -8.17, lon: 113.70 },
+  banyuwangi: { lat: -8.22, lon: 114.37 },
+
+  // Sumatra
+  medan:      { lat:  3.59, lon: 98.67 },
+  palembang:  { lat: -2.99, lon: 104.76 },
+  padang:     { lat: -0.95, lon: 100.35 },
+  pekanbaru:  { lat:  0.51, lon: 101.45 },
+  bandar_lampung:{ lat: -5.45, lon: 105.26 },
+
+  // Kalimantan
+  pontianak:  { lat: -0.02, lon: 109.34 },
+  banjarmasin:{ lat: -3.32, lon: 114.59 },
+  samarinda:  { lat: -0.50, lon: 117.15 },
+  balikpapan: { lat: -1.27, lon: 116.83 },
+
+  // Sulawesi
+  makassar:   { lat: -5.15, lon: 119.43 },
+  manado:     { lat:  1.49, lon: 124.84 },
+  palu:       { lat: -0.90, lon: 119.87 },
+
+  // Bali & Nusa Tenggara
+  denpasar:   { lat: -8.65, lon: 115.22 },
+  mataram:    { lat: -8.58, lon: 116.10 },
+
+  // Papua
+  jayapura:   { lat: -2.54, lon: 140.71 }
 };
 
   /* =========================
