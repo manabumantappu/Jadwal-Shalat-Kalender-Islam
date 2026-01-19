@@ -1,20 +1,15 @@
 import { getShalatTimes } from './shalat.js';
 import { getHijriDate } from './hijri.js';
-import { checkRamadhan } from './ramadhan.js';
+import { checkRamadhan, initRamadhanAlarm } from './ramadhan.js';
 
-
-if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('/public/service-worker.js');
-}
-
-
-navigator.geolocation.getCurrentPosition(pos => {
-const { latitude, longitude } = pos.coords;
-document.getElementById('location').innerText = 'Lokasi terdeteksi';
-
-
-getShalatTimes(latitude, longitude);
-getHijriDate();
-checkRamadhan();
-initRamadhanAlarm();
+document.addEventListener('DOMContentLoaded', () => {
+  getShalatTimes();
+  getHijriDate();
+  checkRamadhan();
+  initRamadhanAlarm();
 });
+
+// Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('../public/service-worker.js');
+}
