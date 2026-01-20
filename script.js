@@ -60,12 +60,6 @@ function getHijri(date = new Date()) {
   return `${hariMap[weekday]}, ${day} ${hijriMonths[month - 1]} ${year} H`;
 }
 
-function isRamadhan(date) {
-  const hijriMonthName = new Intl.DateTimeFormat(
-    "en-US-u-ca-islamic-umalqura",
-    { month: "long" }
-  ).format(date);
-
  function isRamadhan(date) {
   const parts = new Intl.DateTimeFormat(
     "en-US-u-ca-islamic-umalqura",
