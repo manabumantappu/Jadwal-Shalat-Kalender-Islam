@@ -251,35 +251,46 @@ if (nextBtn) {
 };
 
   
-// ===== PILIH & TEST BUNYI ALARM =====
+// ===== TEST & PILIH BUNYI ALARM (FINAL) =====
 const alarmSelect = document.getElementById("alarmSound");
 const alarmAudio  = document.getElementById("alarmAudio");
 const testBtn     = document.getElementById("testAlarm");
 
+console.log("alarmSelect:", alarmSelect);
+console.log("alarmAudio:", alarmAudio);
+console.log("testBtn:", testBtn);
+
 let isTestingAlarm = false;
 
-// load bunyi terakhir
-const savedSound = localStorage.getItem("alarmSound");
-if (savedSound && alarmSelect) {
-  alarmSelect.value = savedSound;
-  alarmAudio.src = `./public/audio/${savedSound}`;
+// set audio awal (WAJIB)
+if (alarmSelect && alarmAudio) {
+  alarmAudio.src = `./public/audio/${alarmSelect.value}`;
 }
 
 // ganti bunyi
-if (alarmSelect) {
+if (alarmSelect && alarmAudio) {
   alarmSelect.addEventListener("change", () => {
-    const sound = alarmSelect.value;
-    alarmAudio.src = `./public/audio/${sound}`;
-    localStorage.setItem("alarmSound", sound);
+    alarmAudio.pause();
+    alarmAudio.currentTime = 0;
+    alarmAudio.src = `./public/audio/${alarmSelect.value}`;
+    localStorage.setItem("alarmSound", alarmSelect.value);
   });
 }
 
-// tombol tes (play / stop)
+// tombol test (play / stop)
 if (testBtn && alarmAudio) {
   testBtn.addEventListener("click", () => {
+    console.log("TOMBOL TEST DIKLIK");
+
     if (!isTestingAlarm) {
       alarmAudio.currentTime = 0;
-      alarmAudio.play();
+      alarmAudio.play()
+        .then(() => console.log("AUDIO PLAY"))
+        .catch(err => {
+          console.error("PLAY ERROR:", err);
+          alert("❌ Audio diblokir browser / path salah");
+        });
+
       testBtn.textContent = "⏹️ Stop Tes Alarm";
       isTestingAlarm = true;
     } else {
@@ -290,6 +301,3 @@ if (testBtn && alarmAudio) {
     }
   });
 }
-
-
-});
