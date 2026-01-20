@@ -9,20 +9,57 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      HIJRIAH
      ========================= */
-  function getHijri(date = new Date()) {
-  const hijri = new Intl.DateTimeFormat(
-    "id-ID-u-ca-islamic-umalqura",
+function getHijri(date = new Date()) {
+  // ambil angka hijriah (AMAN di Android)
+  const parts = new Intl.DateTimeFormat(
+    "en-US-u-ca-islamic-umalqura",
     {
       weekday: "long",
       day: "numeric",
-      month: "long",
+      month: "numeric",
       year: "numeric"
     }
-  ).format(date);
+  ).formatToParts(date);
 
-  // pastikan H, bukan SM
-  return hijri.replace("SM", "H");
+  let day, month, year, weekday;
+
+  parts.forEach(p => {
+    if (p.type === "day") day = p.value;
+    if (p.type === "month") month = parseInt(p.value);
+    if (p.type === "year") year = p.value;
+    if (p.type === "weekday") weekday = p.value;
+  });
+
+  // nama bulan hijriah MANUAL (FIX ANDROID)
+  const hijriMonths = [
+    "Muharram",
+    "Safar",
+    "Rabiul Awal",
+    "Rabiul Akhir",
+    "Jumadil Awal",
+    "Jumadil Akhir",
+    "Rajab",
+    "Sya’ban",
+    "Ramadhan",
+    "Syawal",
+    "Dzulqa’dah",
+    "Dzulhijjah"
+  ];
+
+  // terjemahkan hari ke Indonesia
+  const hariMap = {
+    Sunday: "Minggu",
+    Monday: "Senin",
+    Tuesday: "Selasa",
+    Wednesday: "Rabu",
+    Thursday: "Kamis",
+    Friday: "Jumat",
+    Saturday: "Sabtu"
+  };
+
+  return `${hariMap[weekday]}, ${day} ${hijriMonths[month - 1]} ${year} H`;
 }
+
 function isRamadhan(date) {
   const hijriMonthName = new Intl.DateTimeFormat(
     "en-US-u-ca-islamic-umalqura",
