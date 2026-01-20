@@ -318,6 +318,8 @@ if (playBtn && stopBtn && selectSurah) {
   stopBtn.addEventListener("click", () => {
     audioMurottal.pause();
     audioMurottal.currentTime = 0;
+    audioMurottal.src = `./audio/juz30/${selectSurah.value}.mp3`;
+audioMurottal.play();
   });
 }
 
