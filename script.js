@@ -9,18 +9,28 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      HIJRIAH
      ========================= */
-  function getHijri(date = new Date(), options = {}) {
-    return date.toLocaleDateString(
-      "id-ID-u-ca-islamic-umalqura",
-      {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-        ...options
-      }
-    );
-  }
+  function getHijri(date = new Date()) {
+  const hijri = new Intl.DateTimeFormat(
+    "id-ID-u-ca-islamic-umalqura",
+    {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }
+  ).format(date);
+
+  // pastikan H, bukan SM
+  return hijri.replace("SM", "H");
+}
+function isRamadhan(date) {
+  const hijriMonthName = new Intl.DateTimeFormat(
+    "en-US-u-ca-islamic-umalqura",
+    { month: "long" }
+  ).format(date);
+
+  return hijriMonthName.toLowerCase() === "ramadan";
+}
 
   function formatMasehi(date) {
     return date.toLocaleDateString("id-ID", {
@@ -147,6 +157,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const cellDate = new Date(year, month, d);
       const cell = document.createElement("div");
       cell.textContent = d;
+if (isRamadhan(cellDate)) {
+  cell.classList.add("ramadhan");
+}
 
       if (
   d === today.getDate() &&
