@@ -297,36 +297,61 @@ const playBtn = document.getElementById("playMurottal");
 const stopBtn = document.getElementById("stopMurottal");
 const audioMurottal = document.getElementById("audio-murottal");
 
+const autoNext = document.getElementById("autoNext");
+const loopSurah = document.getElementById("loopSurah");
+
 if (playBtn && stopBtn && selectSurah && audioMurottal) {
 
-  playBtn.addEventListener("click", (e) => {
-    e.preventDefault();
+  function playSurahByIndex(index) {
+    const options = selectSurah.options;
+    if (index < 0 || index >= options.length) return;
 
+    selectSurah.selectedIndex = index;
+    const surah = options[index].value;
+
+    audioMurottal.src = `./public/audio/juz30/${surah}.mp3`;
+    audioMurottal.currentTime = 0;
+    audioMurottal.play();
+  }
+
+  // ▶️ PUTAR
+  playBtn.addEventListener("click", () => {
     if (!selectSurah.value) {
       alert("Pilih surat terlebih dahulu");
       return;
     }
 
-    audioMurottal.pause();
-    audioMurottal.currentTime = 0;
-
     audioMurottal.src =
       `./public/audio/juz30/${selectSurah.value}.mp3`;
 
-    audioMurottal.play()
-      .then(() => console.log("▶️ Putar:", selectSurah.value))
-      .catch(err => console.error("Audio error:", err));
+    audioMurottal.currentTime = 0;
+    audioMurottal.play();
   });
 
-  stopBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-
+  // ⏹ STOP
+  stopBtn.addEventListener("click", () => {
     audioMurottal.pause();
     audioMurottal.currentTime = 0;
-
-    console.log("⏹ Stop");
   });
 
+  // 🎧 SELESAI AUDIO
+  audioMurottal.addEventListener("ended", () => {
+
+    // 🔁 LOOP SURAT
+    if (loopSurah && loopSurah.checked) {
+      audioMurottal.currentTime = 0;
+      audioMurottal.play();
+      return;
+    }
+
+    // ▶️ AUTO NEXT
+    if (autoNext && autoNext.checked) {
+      const nextIndex = selectSurah.selectedIndex + 1;
+      playSurahByIndex(nextIndex);
+    }
+
+  });
 }
+
 
  });
