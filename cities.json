@@ -1,0 +1,10 @@
+[
+  { "name": "Jakarta", "lat": -6.2, "lon": 106.8 },
+  { "name": "Bekasi", "lat": -6.24, "lon": 106.99 },
+  { "name": "Bandung", "lat": -6.91, "lon": 107.61 },
+  { "name": "Cirebon", "lat": -6.73, "lon": 108.55 },
+  { "name": "Yogyakarta", "lat": -7.80, "lon": 110.37 },
+  { "name": "Surabaya", "lat": -7.25, "lon": 112.75 },
+  { "name": "Medan", "lat": 3.59, "lon": 98.67 },
+  { "name": "Makassar", "lat": -5.15, "lon": 119.43 }
+]
