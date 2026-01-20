@@ -240,8 +240,16 @@ if (nextBtn) {
 }
 
   document.getElementById("closePopup").onclick = () => {
-    document.getElementById("popupTanggal").classList.add("hidden");
-  };
+  document.getElementById("popupTanggal").classList.add("hidden");
+
+  if (isTestingAlarm && audioSahur) {
+    audioSahur.pause();
+    audioSahur.currentTime = 0;
+    testBtn.textContent = "🔊 Tes Bunyi Alarm";
+    isTestingAlarm = false;
+  }
+};
+
   
 const testBtn = document.getElementById("testAlarm");
 const audioSahur = document.getElementById("audio-sahur");
