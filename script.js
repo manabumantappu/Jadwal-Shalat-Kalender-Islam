@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   console.log("JS jalan");
+ loadAllCities();
 
   const today = new Date();
   let userLat = -6.2;
@@ -63,10 +64,43 @@ function isRamadhan(date) {
     const selectCity = document.getElementById("selectCity");
     if (!selectCity) return;
 
-    try {
-      const res = await fetch(
-        "https://api.aladhan.com/v1/cities?country=Indonesia"
-      );
+    async function loadAllCities() {
+  const selectCity = document.getElementById("selectCity");
+  if (!selectCity) return;
+
+  try {
+    const res = await fetch("./cities.json");
+    const cities = await res.json();
+
+    selectCity.innerHTML =
+      '<option value="">-- Pilih Kota --</option>';
+
+    cities.forEach(city => {
+      const opt = document.createElement("option");
+      opt.value = JSON.stringify(city);
+      opt.textContent = city.name;
+      selectCity.appendChild(opt);
+    });
+
+  } catch (e) {
+    selectCity.innerHTML =
+      '<option value="">❌ Gagal memuat kota</option>';
+    console.error("Error load cities:", e);
+  }
+}
+const selectCity = document.getElementById("selectCity");
+if (selectCity) {
+  selectCity.addEventListener("change", (e) => {
+    if (!e.target.value) return;
+
+    const city = JSON.parse(e.target.value);
+    userLat = city.lat;
+    userLon = city.lon;
+
+    console.log("Kota aktif:", city.name);
+  });
+}
+
       const data = await res.json();
 
       selectCity.innerHTML =
