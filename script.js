@@ -238,18 +238,7 @@ if (nextBtn) {
     renderCalendar(currentDate);
   });
 }
-
-  document.getElementById("closePopup").onclick = () => {
-  document.getElementById("popupTanggal").classList.add("hidden");
-
-if (isTestingAlarm && alarmAudio) {
-  alarmAudio.pause();
-  alarmAudio.currentTime = 0;
-  testBtn.textContent = "🔊 Tes Bunyi Alarm";
-  isTestingAlarm = false;
-}
-};
-
+ 
   
 // ===== TEST & PILIH BUNYI ALARM (FINAL) =====
 const alarmSelect = document.getElementById("alarmSound");
@@ -264,7 +253,6 @@ if (alarmSelect && alarmAudio) {
 }
 
 // ganti bunyi
-// ganti bunyi
 if (alarmSelect && alarmAudio) {
   alarmSelect.addEventListener("change", () => {
     alarmAudio.pause();
@@ -274,7 +262,7 @@ if (alarmSelect && alarmAudio) {
   });
 }
 
-// tombol test
+// tombol test (PLAY / STOP)
 if (testBtn && alarmAudio) {
   testBtn.addEventListener("click", () => {
     if (!isTestingAlarm) {
@@ -289,3 +277,20 @@ if (testBtn && alarmAudio) {
       isTestingAlarm = false;
     }
   });
+}
+const closeBtn = document.getElementById("closePopup");
+
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    document.getElementById("popupTanggal").classList.add("hidden");
+
+    if (isTestingAlarm && alarmAudio) {
+      alarmAudio.pause();
+      alarmAudio.currentTime = 0;
+      testBtn.textContent = "🔊 Tes Bunyi Alarm";
+      isTestingAlarm = false;
+    }
+  });
+}
+
+});
