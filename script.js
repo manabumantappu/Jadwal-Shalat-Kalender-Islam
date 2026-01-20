@@ -251,26 +251,45 @@ if (nextBtn) {
 };
 
   
-const testBtn = document.getElementById("testAlarm");
-const audioSahur = document.getElementById("audio-sahur");
-const audioAdzan = document.getElementById("audio-adzan");
+// ===== PILIH & TEST BUNYI ALARM =====
+const alarmSelect = document.getElementById("alarmSound");
+const alarmAudio  = document.getElementById("alarmAudio");
+const testBtn     = document.getElementById("testAlarm");
 
 let isTestingAlarm = false;
 
-if (testBtn && audioSahur) {
+// load bunyi terakhir
+const savedSound = localStorage.getItem("alarmSound");
+if (savedSound && alarmSelect) {
+  alarmSelect.value = savedSound;
+  alarmAudio.src = `./public/audio/${savedSound}`;
+}
+
+// ganti bunyi
+if (alarmSelect) {
+  alarmSelect.addEventListener("change", () => {
+    const sound = alarmSelect.value;
+    alarmAudio.src = `./public/audio/${sound}`;
+    localStorage.setItem("alarmSound", sound);
+  });
+}
+
+// tombol tes (play / stop)
+if (testBtn && alarmAudio) {
   testBtn.addEventListener("click", () => {
     if (!isTestingAlarm) {
-      audioSahur.currentTime = 0;
-      audioSahur.play();
+      alarmAudio.currentTime = 0;
+      alarmAudio.play();
       testBtn.textContent = "⏹️ Stop Tes Alarm";
       isTestingAlarm = true;
     } else {
-      audioSahur.pause();
-      audioSahur.currentTime = 0;
+      alarmAudio.pause();
+      alarmAudio.currentTime = 0;
       testBtn.textContent = "🔊 Tes Bunyi Alarm";
       isTestingAlarm = false;
     }
   });
 }
+
 
 });
