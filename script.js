@@ -148,6 +148,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const cell = document.createElement("div");
       cell.textContent = d;
 
+      if (
+  d === today.getDate() &&
+  month === today.getMonth() &&
+  year === today.getFullYear()
+) {
+  cell.classList.add("today");
+}
       cell.addEventListener("click", async () => {
         document.getElementById("popupDate").textContent =
           formatMasehi(cellDate);
@@ -173,6 +180,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   renderCalendar(currentDate);
+const prevBtn = document.getElementById("prevMonth");
+const nextBtn = document.getElementById("nextMonth");
+
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar(currentDate);
+  });
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar(currentDate);
+  });
+}
 
   document.getElementById("closePopup").onclick = () => {
     document.getElementById("popupTanggal").classList.add("hidden");
