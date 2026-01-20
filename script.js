@@ -242,5 +242,29 @@ if (nextBtn) {
   document.getElementById("closePopup").onclick = () => {
     document.getElementById("popupTanggal").classList.add("hidden");
   };
+  
+const testBtn = document.getElementById("testAlarm");
+const audioSahur = document.getElementById("audio-sahur");
+const audioAdzan = document.getElementById("audio-adzan");
+
+if (testBtn) {
+  testBtn.addEventListener("click", () => {
+    // stop dulu kalau sedang bunyi
+    audioSahur.pause();
+    audioAdzan.pause();
+    audioSahur.currentTime = 0;
+    audioAdzan.currentTime = 0;
+
+    // mainkan salah satu
+    audioSahur.play()
+      .then(() => {
+        console.log("Alarm sahur bunyi");
+      })
+      .catch(err => {
+        alert("❌ Audio tidak bisa diputar. Cek izin browser.");
+        console.error(err);
+      });
+  });
+}
 
 });
