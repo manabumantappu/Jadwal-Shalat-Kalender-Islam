@@ -82,7 +82,66 @@
  <p>🌙 Hijriah : <span id="hijriah">-</span></p>
   <p>🎌 Jepang : <span id="jepang">-</span></p>
 </div>
-    
+ <section class="p-4 bg-white rounded-xl shadow m-4">
+  <h2 class="text-lg font-bold text-islamic">🎧 Murottal Juz 30</h2>
+
+  <select id="selectSurah"
+    class="w-full border rounded p-2 mt-3">
+    <option value="">-- Pilih Surat --</option>
+    <option value="an-naba">An-Naba</option>
+    <option value="an-naziat">An-Naziat</option>
+    <option value="abasa">Abasa</option>
+    <option value="at-takwir">At-Takwir</option>
+    <option value="al-infitar">Al-Infitar</option>
+    <option value="al-mutaffifin">Al-Mutaffifin</option>
+    <option value="al-inshiqaq">Al-Inshiqaq</option>
+    <option value="al-buruj">Al-Buruj</option>
+    <option value="at-tariq">At-Tariq</option>
+    <option value="al-aala">Al-A’la</option>
+    <option value="al-ghashiyah">Al-Ghashiyah</option>
+    <option value="al-fajr">Al-Fajr</option>
+    <option value="al-balad">Al-Balad</option>
+    <option value="ash-shams">Ash-Shams</option>
+    <option value="al-lail">Al-Lail</option>
+    <option value="ad-duha">Ad-Duha</option>
+    <option value="ash-sharh">Ash-Sharh</option>
+    <option value="at-tin">At-Tin</option>
+    <option value="al-alaq">Al-‘Alaq</option>
+    <option value="al-qadr">Al-Qadr</option>
+    <option value="al-bayyinah">Al-Bayyinah</option>
+    <option value="az-zalzalah">Az-Zalzalah</option>
+    <option value="al-adiyat">Al-‘Adiyat</option>
+    <option value="al-qariah">Al-Qari’ah</option>
+    <option value="at-takathur">At-Takathur</option>
+    <option value="al-asr">Al-‘Asr</option>
+    <option value="al-humazah">Al-Humazah</option>
+    <option value="al-fil">Al-Fil</option>
+    <option value="quraisy">Quraisy</option>
+    <option value="al-maun">Al-Ma’un</option>
+    <option value="al-kautsar">Al-Kautsar</option>
+    <option value="al-kafirun">Al-Kafirun</option>
+    <option value="an-nasr">An-Nasr</option>
+    <option value="al-lahab">Al-Lahab</option>
+    <option value="al-ikhlas">Al-Ikhlas</option>
+    <option value="al-falaq">Al-Falaq</option>
+    <option value="an-nas">An-Nas</option>
+  </select>
+
+  <div class="flex gap-2 mt-3">
+    <button id="playMurottal"
+      class="flex-1 bg-islamic text-white py-2 rounded">
+      ▶️ Putar
+    </button>
+
+    <button id="stopMurottal"
+      class="flex-1 bg-slate-500 text-white py-2 rounded">
+      ⏹ Stop
+    </button>
+  </div>
+
+  <audio id="audio-murottal"></audio>
+</section>
+   
 <!-- PILIH KOTA -->
 <div class="bg-white rounded-xl shadow p-4 mt-4">
   <h3 class="font-bold mb-2">🏙️ Pilih Kota</h3>
