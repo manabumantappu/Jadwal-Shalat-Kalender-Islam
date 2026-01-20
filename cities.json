@@ -1,10 +1,62 @@
 [
+  // === DKI & JABODETABEK ===
   { "name": "Jakarta", "lat": -6.2, "lon": 106.8 },
   { "name": "Bekasi", "lat": -6.24, "lon": 106.99 },
+  { "name": "Depok", "lat": -6.40, "lon": 106.82 },
+  { "name": "Bogor", "lat": -6.60, "lon": 106.80 },
+  { "name": "Tangerang", "lat": -6.18, "lon": 106.63 },
+  { "name": "Tangerang Selatan", "lat": -6.29, "lon": 106.72 },
+
+  // === JAWA BARAT ===
   { "name": "Bandung", "lat": -6.91, "lon": 107.61 },
+  { "name": "Cimahi", "lat": -6.88, "lon": 107.54 },
   { "name": "Cirebon", "lat": -6.73, "lon": 108.55 },
+  { "name": "Tasikmalaya", "lat": -7.33, "lon": 108.22 },
+  { "name": "Garut", "lat": -7.21, "lon": 107.90 },
+  { "name": "Sukabumi", "lat": -6.92, "lon": 106.93 },
+
+  // === JAWA TENGAH ===
+  { "name": "Semarang", "lat": -6.97, "lon": 110.42 },
+  { "name": "Solo", "lat": -7.57, "lon": 110.83 },
+  { "name": "Magelang", "lat": -7.48, "lon": 110.22 },
+  { "name": "Pekalongan", "lat": -6.89, "lon": 109.67 },
+  { "name": "Tegal", "lat": -6.87, "lon": 109.14 },
+  { "name": "Purwokerto", "lat": -7.42, "lon": 109.23 },
+
+  // === DIY ===
   { "name": "Yogyakarta", "lat": -7.80, "lon": 110.37 },
+
+  // === JAWA TIMUR ===
   { "name": "Surabaya", "lat": -7.25, "lon": 112.75 },
+  { "name": "Malang", "lat": -7.98, "lon": 112.63 },
+  { "name": "Kediri", "lat": -7.82, "lon": 112.01 },
+  { "name": "Jember", "lat": -8.17, "lon": 113.70 },
+  { "name": "Banyuwangi", "lat": -8.22, "lon": 114.37 },
+
+  // === SUMATRA ===
   { "name": "Medan", "lat": 3.59, "lon": 98.67 },
-  { "name": "Makassar", "lat": -5.15, "lon": 119.43 }
+  { "name": "Padang", "lat": -0.95, "lon": 100.35 },
+  { "name": "Pekanbaru", "lat": 0.51, "lon": 101.45 },
+  { "name": "Palembang", "lat": -2.99, "lon": 104.76 },
+  { "name": "Bandar Lampung", "lat": -5.45, "lon": 105.26 },
+
+  // === KALIMANTAN ===
+  { "name": "Pontianak", "lat": -0.02, "lon": 109.34 },
+  { "name": "Banjarmasin", "lat": -3.32, "lon": 114.59 },
+  { "name": "Samarinda", "lat": -0.50, "lon": 117.15 },
+  { "name": "Balikpapan", "lat": -1.27, "lon": 116.83 },
+
+  // === SULAWESI ===
+  { "name": "Makassar", "lat": -5.15, "lon": 119.43 },
+  { "name": "Manado", "lat": 1.49, "lon": 124.84 },
+  { "name": "Palu", "lat": -0.90, "lon": 119.87 },
+  { "name": "Kendari", "lat": -3.99, "lon": 122.51 },
+
+  // === BALI & NUSA TENGGARA ===
+  { "name": "Denpasar", "lat": -8.65, "lon": 115.22 },
+  { "name": "Mataram", "lat": -8.58, "lon": 116.10 },
+  { "name": "Kupang", "lat": -10.17, "lon": 123.61 },
+
+  // === PAPUA ===
+  { "name": "Jayapura", "lat": -2.54, "lon": 140.71 }
 ]
