@@ -66,8 +66,24 @@ function isRamadhan(date) {
     { month: "long" }
   ).format(date);
 
-  return hijriMonthName.toLowerCase() === "ramadan";
+ function isRamadhan(date) {
+  const parts = new Intl.DateTimeFormat(
+    "en-US-u-ca-islamic-umalqura",
+    { month: "numeric" }
+  ).formatToParts(date);
+
+  let hijriMonth;
+
+  parts.forEach(p => {
+    if (p.type === "month") {
+      hijriMonth = parseInt(p.value);
+    }
+  });
+
+  // Ramadhan = bulan ke-9 Hijriah
+  return hijriMonth === 9;
 }
+
 
   function formatMasehi(date) {
     return date.toLocaleDateString("id-ID", {
