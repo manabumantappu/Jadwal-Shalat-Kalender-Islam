@@ -242,12 +242,12 @@ if (nextBtn) {
   document.getElementById("closePopup").onclick = () => {
   document.getElementById("popupTanggal").classList.add("hidden");
 
-  if (isTestingAlarm && audioSahur) {
-    audioSahur.pause();
-    audioSahur.currentTime = 0;
-    testBtn.textContent = "🔊 Tes Bunyi Alarm";
-    isTestingAlarm = false;
-  }
+if (isTestingAlarm && alarmAudio) {
+  alarmAudio.pause();
+  alarmAudio.currentTime = 0;
+  testBtn.textContent = "🔊 Tes Bunyi Alarm";
+  isTestingAlarm = false;
+}
 };
 
   
