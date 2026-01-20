@@ -158,3 +158,23 @@
     font-size: 0.85rem;
   }
 }
+.app-footer {
+  margin-top: 24px;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #64748b; /* slate-500 */
+  background: transparent;
+}
+
+.app-footer .footer-sub {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Mobile lebih kecil */
+@media (max-width: 480px) {
+  .app-footer {
+    font-size: 0.75rem;
+  }
+}
