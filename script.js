@@ -292,5 +292,33 @@ if (closeBtn) {
     }
   });
 }
+const selectSurah = document.getElementById("selectSurah");
+const playBtn = document.getElementById("playMurottal");
+const stopBtn = document.getElementById("stopMurottal");
+const audioMurottal = document.getElementById("audio-murottal");
+
+if (playBtn && stopBtn && selectSurah) {
+
+  playBtn.addEventListener("click", () => {
+    if (!selectSurah.value) {
+      alert("Pilih surat terlebih dahulu");
+      return;
+    }
+
+    audioMurottal.src =
+      `./audio/juz30/${selectSurah.value}.mp3`;
+
+    audioMurottal.currentTime = 0;
+    audioMurottal.play().catch(err => {
+      alert("Audio tidak bisa diputar");
+      console.error(err);
+    });
+  });
+
+  stopBtn.addEventListener("click", () => {
+    audioMurottal.pause();
+    audioMurottal.currentTime = 0;
+  });
+}
 
 });
