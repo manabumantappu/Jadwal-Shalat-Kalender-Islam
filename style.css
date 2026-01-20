@@ -135,3 +135,26 @@
     font-size: 13px;
   }
 }
+/* Kalender Hari Ini - ukuran teks lebih kecil */
+#kalender-hari-ini p,
+#masehi,
+#hijriah,
+#jepang {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Khusus Hijriah (sering panjang) */
+#hijriah {
+  display: inline-block;
+  word-break: break-word;
+}
+
+/* Mobile lebih kecil lagi */
+@media (max-width: 480px) {
+  #masehi,
+  #hijriah,
+  #jepang {
+    font-size: 0.85rem;
+  }
+}
