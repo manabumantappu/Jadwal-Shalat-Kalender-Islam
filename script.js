@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   console.log("JS jalan");
- loadAllCities();
-
+ 
   const today = new Date();
   let userLat = -6.2;
   let userLon = 106.8;
@@ -45,17 +44,13 @@ function isRamadhan(date) {
   /* =========================
      KALENDER HARI INI
      ========================= */
-  document.getElementById("masehi").textContent =
-    formatMasehi(today);
+  document.getElementById("masehi").textContent = formatMasehi(today);
 
-  document.getElementById("hijriah").textContent =
-    getHijri(today);
+  document.getElementById("hijriah").textContent = getHijri(today);
 
-  document.getElementById("jepang").textContent =
-    today.toLocaleDateString("ja-JP-u-ca-japanese", { year: "numeric" });
+  document.getElementById("jepang").textContent = today.toLocaleDateString("ja-JP-u-ca-japanese", { year: "numeric" });
 
-  document.getElementById("hijri-date").textContent =
-    getHijri(today);
+  document.getElementById("hijri-date").textContent = getHijri(today);
 
   /* =========================
      LOAD SEMUA KOTA OTOMATIS
@@ -63,10 +58,6 @@ function isRamadhan(date) {
   async function loadAllCities() {
     const selectCity = document.getElementById("selectCity");
     if (!selectCity) return;
-
-    async function loadAllCities() {
-  const selectCity = document.getElementById("selectCity");
-  if (!selectCity) return;
 
   try {
     const res = await fetch("./cities.json");
@@ -100,52 +91,9 @@ if (selectCity) {
     console.log("Kota aktif:", city.name);
   });
 }
-
-      const data = await res.json();
-
-      selectCity.innerHTML =
-        '<option value="">-- Pilih Kota --</option>';
-
-      data.data.forEach(city => {
-        const opt = document.createElement("option");
-        opt.value = city;
-        opt.textContent = city;
-        selectCity.appendChild(opt);
-      });
-
-      const saved = localStorage.getItem("cityName");
-      if (saved) {
-        selectCity.value = saved;
-        await setCityCoordinate(saved);
-      }
-
-    } catch (e) {
-      selectCity.innerHTML =
-        '<option value="">❌ Gagal memuat kota</option>';
-    }
-  }
-
-  async function setCityCoordinate(city) {
-    const res = await fetch(
-      `https://api.aladhan.com/v1/geocodeByCity?city=${city}&country=Indonesia`
-    );
-    const data = await res.json();
-
-    userLat = data.data.latitude;
-    userLon = data.data.longitude;
-
-    localStorage.setItem("cityName", city);
-  }
-
-  document.getElementById("selectCity")
-    .addEventListener("change", async (e) => {
-      if (e.target.value) {
-        await setCityCoordinate(e.target.value);
-      }
-    });
-
-  loadAllCities();
-
+ loadAllCities(); // ← DIPANGGIL SETELAH FUNGSI ADA
+  
+      
   /* =========================
      JADWAL SHALAT
      ========================= */
