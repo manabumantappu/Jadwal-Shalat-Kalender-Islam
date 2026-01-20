@@ -329,13 +329,4 @@ if (playBtn && stopBtn && selectSurah && audioMurottal) {
 
 }
 
-
-  stopBtn.addEventListener("click", () => {
-    audioMurottal.pause();
-    audioMurottal.currentTime = 0;
-    audioMurottal.src = `./public/audio/juz30/${selectSurah.value}.mp3`;
-audioMurottal.play();
-  });
-}
-
-});
+ });
