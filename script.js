@@ -256,17 +256,14 @@ const alarmSelect = document.getElementById("alarmSound");
 const alarmAudio  = document.getElementById("alarmAudio");
 const testBtn     = document.getElementById("testAlarm");
 
-console.log("alarmSelect:", alarmSelect);
-console.log("alarmAudio:", alarmAudio);
-console.log("testBtn:", testBtn);
-
-let isTestingAlarm = false;
-
+  let isTestingAlarm = false;
+  
 // set audio awal (WAJIB)
 if (alarmSelect && alarmAudio) {
   alarmAudio.src = `./public/audio/${alarmSelect.value}`;
 }
 
+// ganti bunyi
 // ganti bunyi
 if (alarmSelect && alarmAudio) {
   alarmSelect.addEventListener("change", () => {
@@ -277,20 +274,12 @@ if (alarmSelect && alarmAudio) {
   });
 }
 
-// tombol test (play / stop)
+// tombol test
 if (testBtn && alarmAudio) {
   testBtn.addEventListener("click", () => {
-    console.log("TOMBOL TEST DIKLIK");
-
     if (!isTestingAlarm) {
       alarmAudio.currentTime = 0;
-      alarmAudio.play()
-        .then(() => console.log("AUDIO PLAY"))
-        .catch(err => {
-          console.error("PLAY ERROR:", err);
-          alert("❌ Audio diblokir browser / path salah");
-        });
-
+      alarmAudio.play();
       testBtn.textContent = "⏹️ Stop Tes Alarm";
       isTestingAlarm = true;
     } else {
@@ -300,4 +289,3 @@ if (testBtn && alarmAudio) {
       isTestingAlarm = false;
     }
   });
-}
