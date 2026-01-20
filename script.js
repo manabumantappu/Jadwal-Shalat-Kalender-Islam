@@ -247,23 +247,21 @@ const testBtn = document.getElementById("testAlarm");
 const audioSahur = document.getElementById("audio-sahur");
 const audioAdzan = document.getElementById("audio-adzan");
 
-if (testBtn) {
-  testBtn.addEventListener("click", () => {
-    // stop dulu kalau sedang bunyi
-    audioSahur.pause();
-    audioAdzan.pause();
-    audioSahur.currentTime = 0;
-    audioAdzan.currentTime = 0;
+let isTestingAlarm = false;
 
-    // mainkan salah satu
-    audioSahur.play()
-      .then(() => {
-        console.log("Alarm sahur bunyi");
-      })
-      .catch(err => {
-        alert("❌ Audio tidak bisa diputar. Cek izin browser.");
-        console.error(err);
-      });
+if (testBtn && audioSahur) {
+  testBtn.addEventListener("click", () => {
+    if (!isTestingAlarm) {
+      audioSahur.currentTime = 0;
+      audioSahur.play();
+      testBtn.textContent = "⏹️ Stop Tes Alarm";
+      isTestingAlarm = true;
+    } else {
+      audioSahur.pause();
+      audioSahur.currentTime = 0;
+      testBtn.textContent = "🔊 Tes Bunyi Alarm";
+      isTestingAlarm = false;
+    }
   });
 }
 
