@@ -297,23 +297,38 @@ const playBtn = document.getElementById("playMurottal");
 const stopBtn = document.getElementById("stopMurottal");
 const audioMurottal = document.getElementById("audio-murottal");
 
-if (playBtn && stopBtn && selectSurah) {
+if (playBtn && stopBtn && selectSurah && audioMurottal) {
 
-  playBtn.addEventListener("click", () => {
+  playBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
     if (!selectSurah.value) {
       alert("Pilih surat terlebih dahulu");
       return;
     }
 
-    audioMurottal.src =
-      `./audio/juz30/${selectSurah.value}.mp3`;
-
+    audioMurottal.pause();
     audioMurottal.currentTime = 0;
-    audioMurottal.play().catch(err => {
-      alert("Audio tidak bisa diputar");
-      console.error(err);
-    });
+
+    audioMurottal.src =
+      `./public/audio/juz30/${selectSurah.value}.mp3`;
+
+    audioMurottal.play()
+      .then(() => console.log("▶️ Putar:", selectSurah.value))
+      .catch(err => console.error("Audio error:", err));
   });
+
+  stopBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    audioMurottal.pause();
+    audioMurottal.currentTime = 0;
+
+    console.log("⏹ Stop");
+  });
+
+}
+
 
   stopBtn.addEventListener("click", () => {
     audioMurottal.pause();
